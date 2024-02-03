@@ -13,6 +13,7 @@ class AppService {
     if (response.statusCode != 200) {
       throw Exception(response.data['errorMessage']);
     }
+
     return PokemonListResponse.fromJson(response.data);
   }
 }

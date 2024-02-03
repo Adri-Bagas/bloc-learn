@@ -7,14 +7,20 @@ class PokemonListResponse {
   PokemonListResponse({this.count, this.next, this.previous, this.pokemon});
 
   PokemonListResponse.fromJson(Map<String, dynamic> json) {
-    count = json['count'];
-    next = json['next'];
-    previous = json['previous'];
-    if (json['result'] != null) {
-      pokemon = <Pokemon>[];
-      json['results'].forEach((v) {
-        pokemon!.add(new Pokemon.fromJson(v));
-      });
+
+    try{
+      count = json['count'];
+      next = json['next'];
+      previous = json['previous'];
+      if(json['results'] == null) pokemon = [];
+      if (json['results'] != null) {
+        pokemon = <Pokemon>[];
+        json['results'].forEach((v) {
+          pokemon!.add(new Pokemon.fromJson(v));
+        });
+      }
+    }catch(e){
+      throw e;
     }
   }
 
@@ -66,8 +72,7 @@ class Pokemon {
   Pokemon.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     url = json['url'];
-    image =
-    "https://img.pokemondb.net/sprites/sword-shield/icon/${json['name']}.png";
+    image = "https://img.pokemondb.net/sprites/sword-shield/icon/${json['name']}.png";
   }
 
   Map<String, dynamic> toJson() {
