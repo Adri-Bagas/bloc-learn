@@ -32,7 +32,7 @@ class PokemonListBloc extends Bloc<PokemonListEvent, PokemonListState> {
         }
       } on Exception catch (e, stackTrace) {
         debugPrint(stackTrace.toString());
-        emit(PokemonListError(code: 100, message: "Error Gua Nggak Tau Dimana! - KOMPUTER ANDA!"));
+        emit(PokemonListError(code: 100, message: e.toString()));
       } catch (e, stackTrace) {
         debugPrint(stackTrace.toString());
       }

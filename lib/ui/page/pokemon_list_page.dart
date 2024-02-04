@@ -3,6 +3,7 @@ import 'package:bloc_learn/bloc/pokemon_list/pokemon_list_bloc.dart';
 import 'package:bloc_learn/bloc/pokemon_list/pokemon_list_event.dart';
 import 'package:bloc_learn/bloc/pokemon_list/pokemon_list_state.dart';
 import 'package:bloc_learn/data/model/pokemon_list_model.dart';
+import 'package:bloc_learn/ui/page/pokemon_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
@@ -82,37 +83,42 @@ class _HomePageState extends State<HomePage> {
   );
 
   Widget _pokemonListItem(BuildContext context, Pokemon item) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-        child: Row(
-          children: [
-            Image.network(
-              "${item.image}",
-              errorBuilder: (context, error, stackTrace) => Image.network(
-                "https://img.pokemondb.net/sprites/scarlet-violet/icon/${item.name}.png",
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage(url: item.url!),));
+      },
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+          child: Row(
+            children: [
+              Image.network(
+                "${item.image}",
                 errorBuilder: (context, error, stackTrace) => Image.network(
-                  "https://img.pokemondb.net/sprites/sword-shield/icon/ditto.png",
+                  "https://img.pokemondb.net/sprites/scarlet-violet/icon/${item.name}.png",
+                  errorBuilder: (context, error, stackTrace) => Image.network(
+                    "https://img.pokemondb.net/sprites/sword-shield/icon/ditto.png",
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(width: 8.0),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    item.name!,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                  ),
-                  ),
-                ],
+              const SizedBox(width: 8.0),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item.name!,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                    ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:bloc_learn/data/model/pokemon_detail_model.dart';
 import 'package:bloc_learn/data/model/pokemon_list_model.dart';
 import 'package:dio/dio.dart';
 
@@ -15,5 +16,15 @@ class AppService {
     }
 
     return PokemonListResponse.fromJson(response.data);
+  }
+
+  Future<PokemonDetail> fetchPokemonDetail(String url) async {
+    final response =  await _dio.get(url);
+
+    if (response.statusCode != 200) {
+      throw Exception(response.data['errorMessage']);
+    }
+
+    return PokemonDetail.fromJson(response.data);
   }
 }

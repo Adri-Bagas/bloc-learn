@@ -1,20 +1,20 @@
 // user_list_event.dart
 import 'package:equatable/equatable.dart';
 
-abstract class PokemonListEvent extends Equatable {
-  const PokemonListEvent();
+abstract class PokemonDetailEvent extends Equatable {
+  const PokemonDetailEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class GetPokemonList extends PokemonListEvent {
-  final int pageKey;
+class GetPokemonDetail extends PokemonDetailEvent {
+  final String url;
 
-  const GetPokemonList({
-    required this.pageKey,
+  const GetPokemonDetail({
+    required this.url,
   });
 
   @override
-  List<Object> get props => [pageKey];
+  List<Object> get props => [url];
 }

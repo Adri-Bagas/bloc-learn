@@ -1,4 +1,5 @@
 // user_list_state.dart
+import 'package:bloc_learn/data/entities/pokemon_detail_entity.dart';
 import 'package:bloc_learn/data/model/pokemon_list_model.dart';
 import 'package:equatable/equatable.dart';
 
@@ -16,7 +17,7 @@ class PokemonDetailInitial extends PokemonDetailState {}
 class PokemonDetailLoading extends PokemonDetailState {}
 
 class PokemonDetailLoaded extends PokemonDetailState {
-  final PokemonList data;
+  final PokemonDetailEntity data;
 
   const PokemonDetailLoaded({
     required this.data,
