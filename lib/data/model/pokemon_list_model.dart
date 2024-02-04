@@ -67,7 +67,7 @@ class Pokemon {
   String? url;
   String? image;
 
-  Pokemon({this.name, this.url});
+  Pokemon({this.name, this.url, this.image});
 
   Pokemon.fromJson(Map<String, dynamic> json) {
     name = json['name'];

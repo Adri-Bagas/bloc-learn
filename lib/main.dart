@@ -1,4 +1,4 @@
-import 'package:bloc_learn/bloc/user_list/pokemon_list_bloc.dart';
+import 'package:bloc_learn/bloc/pokemon_list/pokemon_list_bloc.dart';
 import 'package:bloc_learn/data/data_provider/local/local_service.dart';
 import 'package:bloc_learn/data/data_provider/remote/app_service.dart';
 import 'package:bloc_learn/data/repositories/app_repository.dart';

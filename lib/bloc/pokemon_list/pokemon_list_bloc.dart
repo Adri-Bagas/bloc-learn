@@ -1,6 +1,6 @@
 // user_list_bloc.dart
-import 'package:bloc_learn/bloc/user_list/pokemon_list_event.dart';
-import 'package:bloc_learn/bloc/user_list/pokemon_list_state.dart';
+import 'package:bloc_learn/bloc/pokemon_list/pokemon_list_event.dart';
+import 'package:bloc_learn/bloc/pokemon_list/pokemon_list_state.dart';
 import 'package:bloc_learn/data/repositories/app_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +27,7 @@ class PokemonListBloc extends Bloc<PokemonListEvent, PokemonListState> {
         if (isLastPage!) {
           emit(PokemonListLastPageLoaded(data: data));
         } else {
-          final nextPageKey = event.pageKey + 1;
+          final nextPageKey = event.pageKey + 20;
           emit(PokemonListLoaded(data: data, nextPageKey: nextPageKey));
         }
       } on Exception catch (e, stackTrace) {

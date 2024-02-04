@@ -1,7 +1,7 @@
 //home_page.dart
-import 'package:bloc_learn/bloc/user_list/pokemon_list_bloc.dart';
-import 'package:bloc_learn/bloc/user_list/pokemon_list_event.dart';
-import 'package:bloc_learn/bloc/user_list/pokemon_list_state.dart';
+import 'package:bloc_learn/bloc/pokemon_list/pokemon_list_bloc.dart';
+import 'package:bloc_learn/bloc/pokemon_list/pokemon_list_event.dart';
+import 'package:bloc_learn/bloc/pokemon_list/pokemon_list_state.dart';
 import 'package:bloc_learn/data/model/pokemon_list_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  final PagingController<int, Pokemon> _pagingUserController = PagingController(firstPageKey: 1);
+  final PagingController<int, Pokemon> _pagingUserController = PagingController(firstPageKey: 0);
 
   void _setListPaging() {
     _pagingUserController.addPageRequestListener((pageKey) {
@@ -42,10 +42,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) =>
       Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: const Text('Pokemon List'),
-          backgroundColor: Colors.blue,
-        ),
         body: _appBody(),
       );
 
@@ -70,12 +66,9 @@ class _HomePageState extends State<HomePage> {
                 return PagedListView<int, Pokemon>(
                   pagingController: _pagingUserController,
                   builderDelegate: PagedChildBuilderDelegate<Pokemon>(
-                    itemBuilder: (context, item, index) =>
-                        _pokemonListItem(context, item),
-                    firstPageProgressIndicatorBuilder: (_) =>
-                    const Center(child: CircularProgressIndicator()),
-                    newPageProgressIndicatorBuilder: (_) =>
-                    const Center(child: CircularProgressIndicator()),
+                    itemBuilder: (context, item, index) => _pokemonListItem(context, item),
+                    firstPageProgressIndicatorBuilder: (_) => const Center(child: CircularProgressIndicator()),
+                    newPageProgressIndicatorBuilder: (_) => const Center(child: CircularProgressIndicator()),
                     noItemsFoundIndicatorBuilder: (_) => const Center(
                         child: Text(
                           "No Data wwwwwwww",

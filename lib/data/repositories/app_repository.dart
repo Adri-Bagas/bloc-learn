@@ -19,6 +19,7 @@ class AppRepository {
       pokemons: response.pokemon!.map((data) => Pokemon(
         name: data.name,
         url: data.url,
+        image: "https://img.pokemondb.net/sprites/sword-shield/icon/${data.name}.png",
       )).toList(),
     );
   }
